@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const PORT = process.env.PORT;
+const PORT = 5000;
 
 app.use('/vaults', vaultRouter);
 app.use('/user', userRouter);
 app.use('/suggestion', suggestionRouter);
 
-app.listen(PORT);
+app.listen(process.env.PORT || PORT);
