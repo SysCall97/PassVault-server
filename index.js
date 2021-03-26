@@ -14,6 +14,8 @@ app.use(cors());
 
 const PORT = 5000;
 
+app.get('/', (req, res) => res.send("BE is working"));
+
 app.use('/vaults', vaultRouter);
 app.use('/user', userRouter);
 app.use('/suggestion', suggestionRouter);
