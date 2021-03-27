@@ -25,7 +25,7 @@ vaultController.getPasswordsByEmail = async (req, res) => {
 
             await document.forEach(async (data) => {
                 const password = await decrypt({ password: data.password, dbKey: process.env.DBKEY, userKey: process.env.USERKEY });
-                entry.push({ siteLink: data.siteLink, password });
+                entry.push({ id: data._id, siteLink: data.siteLink, password });
             });
 
         })();
