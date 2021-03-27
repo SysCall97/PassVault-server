@@ -7,13 +7,20 @@ const lowerCase = workerData.lowerCase;
 const digits = workerData.digits;
 const specialChar = workerData.specialChar;
 
-const passwords = generator.generateMultiple(10, {
-    length: length,
-    uppercase: upperCase,
-    lowercase: lowerCase,
-    numbers: digits,
-    symbols: specialChar,
-    strict: true
-});
+(async () => {
+    try{
+        const passwords = await generator.generateMultiple(10, {
+            length: length,
+            uppercase: upperCase,
+            lowercase: lowerCase,
+            numbers: digits,
+            symbols: specialChar,
+            strict: true
+        });
+        console.log(passwords);
 
-parentPort.postMessage(passwords);
+        parentPort.postMessage(passwords);
+    } catch(e) {
+        parentPort.postMessage(e);
+    }
+})();

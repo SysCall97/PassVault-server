@@ -7,6 +7,7 @@ suggestionController.getPasswords = async (req, res) => {
         const suggestions = new Worker(__dirname + '/worker/generatePasswords.js', { workerData: req.body });
 
         await suggestions.on('message', (suggestions) => {
+            console.log(suggestions);
             return res.status(200).json(suggestions);
         });
 
